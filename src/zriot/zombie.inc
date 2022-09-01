@@ -20,12 +20,12 @@ public Action Command_NightVision(int client, int argc)
     bool enabled = GetConVarBool(gCvars.CVAR_ENABLE);
     if (!allow_disable || !enabled)
     {
-        return;
+        return Plugin_Handled;
     }
     
     if (!IsPlayerZombie(client))
     {
-        return;
+        return Plugin_Handled;
     }
     
     bZVision[client] = !bZVision[client];
@@ -33,11 +33,13 @@ public Action Command_NightVision(int client, int argc)
     if (bZVision[client])
     {
         StartZVision(client);
+        return Plugin_Handled;
     }
     else
     {
         StopZVision(client);
         ClientCommand(client, "r_screenoverlay \"\"");
+        return Plugin_Handled;
     }
 }
 
@@ -189,6 +191,7 @@ public Action UnfreezeZombies(Handle timer)
     }
     
     tFreeze = INVALID_HANDLE;
+    return Plugin_Stop;
 }
 
 void RemoveObjectives()
@@ -218,20 +221,22 @@ public Action JoinZombie(Handle timer, any index)
 {
     if (!IsClientInGame(index))
     {
-        return;
+        return Plugin_Stop;
     }
     
     ZRiot_Zombie(index);
+    return Plugin_Stop;
 }
 
 public Action ZombieRespawn(Handle timer, any index)
 {
     if (!IsClientInGame(index))
     {
-        return;
+        return Plugin_Stop;
     }
     
     CS_RespawnPlayer(index);
+    return Plugin_Stop;
 }
 
 void StartRespawnTimer(int client, bool firstspawn)
@@ -356,7 +361,7 @@ public Action RemoveRagdoll(Handle timer, any ragdoll)
 {
     if (ragdoll == -1 || !IsValidEdict(ragdoll))
     {
-        return;
+        return Plugin_Stop;
     }
     
     char classname[64];
@@ -364,10 +369,11 @@ public Action RemoveRagdoll(Handle timer, any ragdoll)
     
     if (!StrEqual(classname, "cs_ragdoll"))
     {
-        return;
+        return Plugin_Stop;
     }
         
     RemoveEdict(ragdoll);
+    return Plugin_Stop;
 }
 
 void Fade(int client, int speed, int hold, int type, int red, int green, int blue, int alpha)

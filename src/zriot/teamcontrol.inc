@@ -133,6 +133,7 @@ void ResetZombies(bool switchteam)
 public Action AssignTeamTimer(Handle timer)
 {
     AssignTeamAll(false);
+    return Plugin_Stop;
 }
 
 void AssignTeam(int[] clients, int numClients, bool spawn)

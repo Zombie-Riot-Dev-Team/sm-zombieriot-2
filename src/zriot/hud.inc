@@ -9,6 +9,7 @@
 public Action HUD(Handle timer)
 {
     UpdateHUDAll();
+    return Plugin_Continue;
 }
 
 void UpdateHUD(int[] clients, int numClients)
@@ -56,14 +57,14 @@ void UpdateHUD(int[] clients, int numClients)
 
 stock void UpdateHUDClient(int client)
 {
-    if (!IsClientInGame(client) || GetClientTeam(x) == CS_TEAM_NONE)
+    if (!IsClientInGame(client) || GetClientTeam(client) == CS_TEAM_NONE)
     {
         return;
     }
     
     int clients[1];
-	clients[0] = client;
-	
+    clients[0] = client;
+    
     UpdateHUD(clients, 1);
 }
 

@@ -276,4 +276,5 @@ public Action RemoveSpawnWeapon(Handle timer, any weapon)
     {
         RemoveEdict(weapon);
 	}
+    return Plugin_Stop;
 }

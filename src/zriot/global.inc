@@ -51,6 +51,7 @@ public int Native_Zombie(Handle plugin, int argc)
         ThrowNativeError(SP_ERROR_INDEX, "Client index %d is not in the game", client);
     
     ZRiot_Zombie(client);
+    return 0;
 }
 
 public int Native_Human(Handle plugin, int argc)
@@ -63,6 +64,7 @@ public int Native_Human(Handle plugin, int argc)
         ThrowNativeError(SP_ERROR_INDEX, "Bots cannot be moved to the human team");
     
     ZRiot_Human(client);
+    return 0;
 }
 
 public int Native_GetClientHumanClass(Handle plugin, int argc)

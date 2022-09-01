@@ -117,7 +117,7 @@ public Action PlayerDisconnect(Handle event, const char[] name, bool dontBroadca
     return Plugin_Continue;
 }
 
-public Action RoundStart(Handle event, const char[] name, bool dontBroadcast)
+public void RoundStart(Handle event, const char[] name, bool dontBroadcast)
 {
     bool dynamic = GetConVarBool(gCvars.CVAR_DYNAMIC_ENABLE);
 
@@ -202,9 +202,11 @@ public Action RoundStart(Handle event, const char[] name, bool dontBroadcast)
 
     float timer = GetConVarFloat(gCvars.CVAR_FREEZE);
     CreateTimer(timer, ResetStatus);
+
+    return;
 }
 
-public Action RoundFreezeEnd(Handle event, const char[] name, bool dontBroadcast)
+public void RoundFreezeEnd(Handle event, const char[] name, bool dontBroadcast)
 {
     RemoveObjectives();
     
@@ -221,9 +223,11 @@ public Action RoundFreezeEnd(Handle event, const char[] name, bool dontBroadcast
         
         tFreeze = CreateTimer(freeze, UnfreezeZombies);
     }   
+
+    return;
 }
 
-public Action RoundEnd(Handle event, const char[] name, bool dontBroadcast)
+public void RoundEnd(Handle event, const char[] name, bool dontBroadcast)
 {
     ResetZombies(false);
     ClearTrie(trieDeaths);
@@ -261,6 +265,8 @@ public Action RoundEnd(Handle event, const char[] name, bool dontBroadcast)
         CloseHandle(tFreeze);
         tFreeze = INVALID_HANDLE;
     }
+
+    return;
 }
 
 bool ptFire = true;
@@ -285,7 +291,7 @@ public Action PlayerTeam_Pre(Handle event, const char[] name, bool dontBroadcast
     return Plugin_Continue;
 }
 
-public Action PlayerTeam_Post(Handle event, const char[] name, bool dontBroadcast)
+public void PlayerTeam_Post(Handle event, const char[] name, bool dontBroadcast)
 {
     bool disconnect = GetEventBool(event, "disconnect");
     if (disconnect)
@@ -315,14 +321,17 @@ public Action PlayerTeam_Post(Handle event, const char[] name, bool dontBroadcas
         
         StartRespawnTimer(index, true);
     }
+
+    return;
 }
 
 public Action CheckTeam(Handle timer, any index)
 {
     AssignTeamClient(index, IsPlayerAlive(index));
+    return Plugin_Stop;
 }
 
-public Action PlayerSpawn(Handle event, const char[] name, bool dontBroadcast)
+public void PlayerSpawn(Handle event, const char[] name, bool dontBroadcast)
 {
     int index = GetClientOfUserId(GetEventInt(event, "userid"));
     
@@ -441,9 +450,11 @@ public Action PlayerSpawn(Handle event, const char[] name, bool dontBroadcast)
         CloseHandle(tRespawn[index]);
         tRespawn[index] = INVALID_HANDLE;
     }
+
+    return;
 }
 
-public Action PlayerHurt(Handle event, const char[] name, bool dontBroadcast)
+public void PlayerHurt(Handle event, const char[] name, bool dontBroadcast)
 {
     int index = GetClientOfUserId(GetEventInt(event, "userid"));
     int attacker = GetClientOfUserId(GetEventInt(event, "attacker"));
@@ -501,9 +512,11 @@ public Action PlayerHurt(Handle event, const char[] name, bool dontBroadcast)
         float burntime = GetConVarFloat(gCvars.CVAR_NAPALM_TIME);
         IgniteEntity(index, burntime);
     }
+
+    return;
 }
 
-public Action PlayerDeath(Handle event, const char[] name, bool dontBroadcast)
+public void PlayerDeath(Handle event, const char[] name, bool dontBroadcast)
 {
     int index = GetClientOfUserId(GetEventInt(event, "userid"));
     
@@ -610,9 +623,11 @@ public Action PlayerDeath(Handle event, const char[] name, bool dontBroadcast)
         CloseHandle(tZVision[index]);
         tZVision[index] = INVALID_HANDLE;
     }
+
+    return;
 }
 
-public Action PlayerJump(Handle event, const char[] name, bool dontBroadcast)
+public void PlayerJump(Handle event, const char[] name, bool dontBroadcast)
 {
     int index = GetClientOfUserId(GetEventInt(event, "userid"));
     
@@ -631,6 +646,8 @@ public Action PlayerJump(Handle event, const char[] name, bool dontBroadcast)
     
         SetPlayerVelocity(index, vel);
     }
+
+    return;
 }
 
 public Action ResetStatus(Handle timer, any data)
