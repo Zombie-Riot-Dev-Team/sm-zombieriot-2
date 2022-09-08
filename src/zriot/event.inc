@@ -164,8 +164,6 @@ public void RoundStart(Handle event, const char[] name, bool dontBroadcast)
         }
     }
     
-    ZRiot_PrintToChat(0, "Round objective");
-    
     char storyline[192];
     GetDayStoryLine(gDay, storyline, sizeof(storyline));
     
@@ -342,6 +340,8 @@ public void PlayerSpawn(Handle event, const char[] name, bool dontBroadcast)
     {
         return;
     }
+
+    ZRiot_PrintToChat(index, "Round objective");
     
     gZombieID[index] = -1;
     
