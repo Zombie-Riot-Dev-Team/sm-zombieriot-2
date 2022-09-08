@@ -327,7 +327,9 @@ public void PlayerTeam_Post(Handle event, const char[] name, bool dontBroadcast)
 
 public Action CheckTeam(Handle timer, any index)
 {
-    AssignTeamClient(index, IsPlayerAlive(index));
+    if(IsClientInGame(index))
+        AssignTeamClient(index, IsPlayerAlive(index));
+	
     return Plugin_Stop;
 }
 
