@@ -96,7 +96,7 @@ void EmitAmbience(const char[] sound)
     
     for (int i = 1; i <= MaxClients; i++)
     {
-        if(g_fAmbienceVolume[i] != 0.0)
+        if(g_fAmbienceVolume[i] != 0.0 && IsClientInGame(i) && !IsFakeClient(i))
         {
             float realvolume = g_fAmbienceVolume[i] / 100.0;
             EmitSoundToClient(i, sound, SOUND_FROM_PLAYER, SNDCHAN_AUTO, SNDLEVEL_NORMAL, SND_NOFLAGS, realvolume, SNDPITCH_NORMAL, -1, NULL_VECTOR, NULL_VECTOR, true, 0.0);
