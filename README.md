@@ -7,7 +7,7 @@ https://forums.alliedmods.net/showthread.php?t=335402
 Plugin update based on original: https://forums.alliedmods.net/showthread.php?p=647040  
  
  The thing that is done
-- Completely new syntax
+- Completely new syntax (Supported SM 1.11+)
 - Replaced the old function with Sourcemod API
 - Add CS:GO support
 - Specific max Zombie spawn in that day
