@@ -5,6 +5,11 @@
  *   Author: Greyscale
  * ==================== 
  */
+ 
+ #if defined _zombieriot_included_
+  #endinput
+#endif
+#define _zombieriot_included_
 
 /**
  * Used to check if a player is a zombie.
@@ -70,3 +75,25 @@ native int ZRiot_GetClientHumanClass(int client);
  * @return   Client Zombie Class index.
  */
 native int ZRiot_GetClientZombieClasss(int client);
+
+public SharedPlugin __pl_zombieriot = 
+{
+    name = "zombieriot",
+    file = "zombieriot.smx",
+#if defined REQUIRE_PLUGIN
+    required = 1,
+#else
+    required = 0,
+#endif
+};
+
+#if !defined REQUIRE_PLUGIN
+public void __pl_zombieriot_SetNTVOptional()
+{
+    MarkNativeAsOptional("ZRiot_IsClientZombie");
+    MarkNativeAsOptional("ZRiot_GetClientHumanClass");
+    MarkNativeAsOptional("ZRiot_GetClientZombieClasss");
+    MarkNativeAsOptional("ZRiot_Zombie");
+    MarkNativeAsOptional("ZRiot_Human");
+}
+#endif
