@@ -114,5 +114,9 @@ public void __pl_zombieriot_SetNTVOptional()
     MarkNativeAsOptional("ZRiot_GetClientZombieClasss");
     MarkNativeAsOptional("ZRiot_Zombie");
     MarkNativeAsOptional("ZRiot_Human");
+
+    MarkNativeAsOptional("ZRiot_GetDay");
+    MarkNativeAsOptional("ZRiot_SetDay");
+    MarkNativeAsOptional("ZRiot_GetTotalDay");
 }
 #endif
