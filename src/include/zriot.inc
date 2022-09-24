@@ -76,6 +76,25 @@ native int ZRiot_GetClientHumanClass(int client);
  */
 native int ZRiot_GetClientZombieClasss(int client);
 
+/**
+ * Get Current Zombie Riot "Day Wave"
+ * @return   Return Day Index.
+ */
+native int ZRiot_GetDay();
+
+/**
+ * Set the Day in ZRiot
+ * @param day   Day index.
+ * @return   0 if success, -1 failed otherwise.
+ */
+native void ZRiot_SetDay(int day);
+
+/**
+ * Get All Zombie Riot "Day Wave" count
+ * @return   Return amount of day index.
+ */
+native int ZRiot_GetTotalDay();
+
 public SharedPlugin __pl_zombieriot = 
 {
     name = "zombieriot",

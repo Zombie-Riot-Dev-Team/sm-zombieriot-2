@@ -33,6 +33,7 @@ bool market;
 char gMapConfig[PLATFORM_MAX_PATH];
 
 int gDay;
+int dCount;
 
 int gZombieTeam;
 int gHumanTeam;

@@ -28,7 +28,6 @@ enum struct ZRiot_DayData
 Handle kvDays = INVALID_HANDLE;
 
 ZRiot_DayData arrayDays[MAXDAYS];
-int dCount;
 
 void LoadDayData(bool defaultconfig)
 {

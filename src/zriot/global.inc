@@ -19,6 +19,9 @@ void CreateGlobals()
     CreateNative("ZRiot_GetHumanTeam", Native_GetHumanTeam);
     CreateNative("ZRiot_GetClientHumanClass", Native_GetClientHumanClass);
     CreateNative("ZRiot_GetClientZombieClasss", Native_GetClientZombieClass);
+    CreateNative("ZRiot_GetDay", Native_GetDay);
+    CreateNative("ZRiot_SetDay", Native_SetDay);
+    CreateNative("ZRiot_GetTotalDay", Native_GetTotalDay);
     
     hOnClientZombie = CreateGlobalForward("ZRiot_OnClientZombie", ET_Ignore, Param_Cell);
     hOnClientHuman = CreateGlobalForward("ZRiot_OnClientHuman", ET_Ignore, Param_Cell);
@@ -88,4 +91,38 @@ public int Native_GetClientZombieClass(Handle plugin, int argc)
         ThrowNativeError(SP_ERROR_INDEX, "Client index %d is not in the game", client);
 
     return gZombieID[client];
+}
+
+public int Native_SetDay(Handle plugin, int argc)
+{
+    int day = GetNativeCell(1);
+
+    if(day < 1 || day > gDay)
+    {
+        ThrowNativeError(SP_ERROR_INDEX, "Invalid Number has been used", day);
+        return -1;
+    }
+
+    gDay = day - 1;
+
+    ZRiot_PrintToChat(0, "Skip to day", gDay + 1);
+    
+    if (tHUD == INVALID_HANDLE)
+    {
+        return -1;
+    }
+    
+    CS_TerminateRound(3.0, CSRoundEnd_Draw, true);
+    return 0;
+}
+
+public int Native_GetDay(Handle plugin, int argc)
+{
+    // day as index (start with 0 not 1)
+    return gDay;
+}
+
+public int Native_GetTotalDay(Handle plugin, int argc)
+{
+    return dCount;
 }
