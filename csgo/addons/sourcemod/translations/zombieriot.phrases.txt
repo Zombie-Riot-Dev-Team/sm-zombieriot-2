@@ -118,6 +118,18 @@
 		"#format"	"{1:d},{2:d}"
 		"en"		"Blocking Overlay - DX{1} Detected (DX{2} Required)"
 	}
+
+	"Usage Zombie Count"
+	{
+		"en"		"The zombie count can't be and lower than 0!"
+	}
+
+	"Set Zombie Count"
+	{
+		"#format"	"{1:d}"
+		"en"		"Zombie count has been changed to @green{1}@default."
+	}
+	
 	// ===========================
 	// Menus
 	// ===========================

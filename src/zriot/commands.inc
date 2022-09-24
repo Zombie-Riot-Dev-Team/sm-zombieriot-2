@@ -15,6 +15,8 @@ void CreateCommands()
     
     RegAdminCmd("zriot_zombie", Command_Zombie, ADMFLAG_GENERIC, "Turns player into zombie");
     RegAdminCmd("zriot_human", Command_Human, ADMFLAG_GENERIC, "Turns player into human");
+
+    RegAdminCmd("zriot_setcount", Command_SetCount, ADMFLAG_CONFIG, "Sets Zombie count of current day");
 }
     
 public Action Command_Restrict(int client, int argc)
@@ -153,5 +155,31 @@ public Action Command_Human(int client, int argc)
         ZRiot_Human(targets[x]);
     }
     
+    return Plugin_Handled;
+}
+
+public Action Command_SetCount(int client, int argc)
+{
+    bool enabled = GetConVarBool(gCvars.CVAR_ENABLE);
+    if (argc < 1 || !enabled)
+    {
+        return Plugin_Handled;
+    }
+
+    char sArg1[16];
+
+    GetCmdArg(1, sArg1, sizeof(sArg1));
+
+    int count = StringToInt(sArg1);
+
+    if(count <= 0)
+    {
+        ZRiot_ReplyToCommand(client, "Usage Zombie Count");
+        return Plugin_Handled;
+    }
+
+    ZRiot_PrintToChat(0, "Set Zombie Count", count);
+    arrayDays[gDay].data_count = count;
+
     return Plugin_Handled;
 }
