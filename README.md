@@ -13,6 +13,7 @@ Plugin update based on original: https://forums.alliedmods.net/showthread.php?p=
 - Specific max Zombie spawn in that day
 - Spawn Protection
 - Dynamic Difficulty (Experimental)
-- Human Class (NEW)
-- Volume Control (NEW)
-- ~~Specific Max Human Player (New)~~ Removed
+- Human Class
+- Volume Control
+- API for Day Data and Zombie Count (NEW)
+
