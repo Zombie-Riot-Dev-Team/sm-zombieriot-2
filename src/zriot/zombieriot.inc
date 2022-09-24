@@ -80,6 +80,29 @@ Handle g_hAmbienceVolume = INVALID_HANDLE;
 float g_fZombieVolume[MAXPLAYERS+1];
 float g_fAmbienceVolume[MAXPLAYERS+1];
 
+#define MAXZOMBIES 25
+
+enum struct ZRiot_DayData
+{
+    char data_display[32];
+    char data_zombieoverride[32*MAXZOMBIES];
+    char data_storyline[192];
+    int data_count;
+    float data_count_ratio;
+    int data_healthboost;
+    float data_hp_ratio;
+    bool data_respawn;
+    char data_deaths_before_zombie;
+    float data_fademin;
+    float data_fademax;
+	int data_maxzm;
+    float data_maxzm_ratio;
+}
+
+#define MAXDAYS 25
+
+ZRiot_DayData arrayDays[MAXDAYS];
+
 void FindClientDXLevel(int client)
 {
     if (IsFakeClient(client))

@@ -2,7 +2,7 @@
  * ====================
  *    Zombie Riot
  *   File: zriot.inc
- *   Author: Greyscale
+ *   Author: Greyscale, Oylsister
  * ==================== 
  */
  
@@ -95,6 +95,27 @@ native void ZRiot_SetDay(int day);
  */
 native int ZRiot_GetTotalDay();
 
+/**
+ * Get Total Zombie that need to be eliminated in that day.
+ * @param day   Day index.
+ * @return   Return total zombie count, -1 if invalid day.
+ */
+native int ZRiot_GetZombieCount(int day);
+
+/**
+ * Get Number of zombie that has been already killed.
+ * @return   Return amount of zombie that get killed.
+ */
+native int ZRiot_GetZombieKilledCount();
+
+/**
+ * Set Total Zombie that need to be eliminated in that day.
+ * @param day   Day index.
+ * @param zombiecount   number zombie count that you desire to change.
+ * @return   0 if success, -1 failed otherwise.
+ */
+native int ZRiot_SetZombieCount(int day, int zombiecount);
+
 public SharedPlugin __pl_zombieriot = 
 {
     name = "zombieriot",
@@ -118,5 +139,9 @@ public void __pl_zombieriot_SetNTVOptional()
     MarkNativeAsOptional("ZRiot_GetDay");
     MarkNativeAsOptional("ZRiot_SetDay");
     MarkNativeAsOptional("ZRiot_GetTotalDay");
+
+    MarkNativeAsOptional("ZRiot_GetZombieCount");
+    MarkNativeAsOptional("ZRiot_GetZombieKilledCount");
+    MarkNativeAsOptional("ZRiot_SetZombieCount");
 }
 #endif

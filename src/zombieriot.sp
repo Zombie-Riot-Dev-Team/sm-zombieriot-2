@@ -16,7 +16,7 @@
 #undef REQUIRE_PLUGIN
 #include <market>
 
-#define VERSION "2.3.1"
+#define VERSION "2.3.2"
 
 #pragma newdecls required
 

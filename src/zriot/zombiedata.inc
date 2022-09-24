@@ -19,8 +19,6 @@ enum struct ZRiot_ZombieData
     int data_fov;
 }
 
-#define MAXZOMBIES 25
-
 char modelSuffix[8][16] = {".dx80.vtx", ".dx90.vtx", ".mdl", ".phy", ".sw.vtx", ".vvd", ".xbox", ".xbox.vtx"};
 
 Handle kvZombies = INVALID_HANDLE;

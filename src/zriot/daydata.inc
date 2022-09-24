@@ -6,28 +6,7 @@
  * ====================
  */
 
-enum struct ZRiot_DayData
-{
-    char data_display[32];
-    char data_zombieoverride[32*MAXZOMBIES];
-    char data_storyline[192];
-    int data_count;
-    float data_count_ratio;
-    int data_healthboost;
-    float data_hp_ratio;
-    bool data_respawn;
-    char data_deaths_before_zombie;
-    float data_fademin;
-    float data_fademax;
-	int data_maxzm;
-    float data_maxzm_ratio;
-}
-
-#define MAXDAYS 25
-
 Handle kvDays = INVALID_HANDLE;
-
-ZRiot_DayData arrayDays[MAXDAYS];
 
 void LoadDayData(bool defaultconfig)
 {

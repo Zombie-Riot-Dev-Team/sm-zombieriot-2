@@ -22,6 +22,9 @@ void CreateGlobals()
     CreateNative("ZRiot_GetDay", Native_GetDay);
     CreateNative("ZRiot_SetDay", Native_SetDay);
     CreateNative("ZRiot_GetTotalDay", Native_GetTotalDay);
+    CreateNative("ZRiot_GetZombieCount", Native_GetZombieCount);
+    CreateNative("ZRiot_GetZombieKilledCount", Native_GetZombieKilledCount);
+    CreateNative("ZRiot_SetZombieCount", Native_SetZombieCount);
     
     hOnClientZombie = CreateGlobalForward("ZRiot_OnClientZombie", ET_Ignore, Param_Cell);
     hOnClientHuman = CreateGlobalForward("ZRiot_OnClientHuman", ET_Ignore, Param_Cell);
@@ -99,7 +102,7 @@ public int Native_SetDay(Handle plugin, int argc)
 
     if(day < 1 || day > gDay)
     {
-        ThrowNativeError(SP_ERROR_INDEX, "Invalid Number has been used", day);
+        ThrowNativeError(SP_ERROR_INDEX, "Invalid Day Number has been used");
         return -1;
     }
 
@@ -125,4 +128,43 @@ public int Native_GetDay(Handle plugin, int argc)
 public int Native_GetTotalDay(Handle plugin, int argc)
 {
     return dCount;
+}
+
+public int Native_GetZombieCount(Handle plugin, int argc)
+{
+    int day = GetNativeCell(1);
+
+    if(day < 1 || day > gDay)
+    {
+        ThrowNativeError(SP_ERROR_INDEX, "Invalid Day Number has been used");
+        return -1;
+    }
+
+    return arrayDays[day].data_count;
+}
+
+public int Native_GetZombieKilledCount(Handle plugin, int argc)
+{
+    return gZombiesKilled;
+}
+
+public int Native_SetZombieCount(Handle plugin, int argc)
+{
+    int day = GetNativeCell(1);
+    int zombiecount = GetNativeCell(2);
+
+    if(day < 1 || day > gDay)
+    {
+        ThrowNativeError(SP_ERROR_INDEX, "Invalid Day Number has been used");
+        return -1;
+    }
+
+    if(zombiecount <= 0)
+    {
+        ThrowNativeError(SP_ERROR_INDEX, "Zombie Number can't be minus value!");
+        return -1;
+    }
+
+    arrayDays[day].data_count = zombiecount;
+    return 0;
 }
