@@ -102,6 +102,9 @@ void Zombify(int client, int zombieid)
     ApplyZombieSpeed(client, zombieid);
     ApplyZombieGravity(client, zombieid);
     ApplyZombieFOV(client, zombieid);
+
+    SetEntProp(client, Prop_Send, "m_bHasHelmet", false);
+    SetEntProp(client, Prop_Data, "m_ArmorValue", 0);
     
     if (bZVision[client])
     {
