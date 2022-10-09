@@ -591,7 +591,13 @@ public void PlayerDeath(Handle event, const char[] name, bool dontBroadcast)
         }
         else
         {
-            StartRespawnTimer(index, false);
+            g_bAllowHumanRespawn = GetConVarBool(gCvars.CVAR_ALLOWHUMAN_RESPAWN);
+
+            if(g_bAllowHumanRespawn)
+                StartRespawnTimer(index, false);
+
+            else
+                ZRiot_PrintToChat(index, "Human Respawn is disabled");
         }
         
         RemoveTargeters(index);

@@ -47,6 +47,7 @@ enum struct ZRiotSettings
     Handle CVAR_SPAWNPROTECTSPEED;
     Handle CVAR_DYNAMIC_ENABLE;
     Handle CVAR_DYNAMIC_PLAYERRATIO;
+    Handle CVAR_ALLOWHUMAN_RESPAWN;
 }
 
 ZRiotSettings gCvars;
@@ -92,10 +93,18 @@ void CreateCvars()
     gCvars.CVAR_SPAWNPROTECTSPEED     =    CreateConVar("zriot_spawnprotectspeed", "400.0", "How much speed that client will get after spawn before back to normal");
     gCvars.CVAR_DYNAMIC_ENABLE        =    CreateConVar("zriot_dynamic_enable", "0.0", "Enable Dyanmic Zombie mode (Difficulty Dynamic) WARNING: This is still unstable.");
     gCvars.CVAR_DYNAMIC_PLAYERRATIO   =    CreateConVar("zriot_dynamic_playerratio", "10.0", "Every n player the zombie will get buffed");
+    gCvars.CVAR_ALLOWHUMAN_RESPAWN    =    CreateConVar("zriot_allowhuman_respawn", "1.0", "Allow Human To Respawn in that map or not.");
     
     HookConVarChange(gCvars.CVAR_ENABLE, EnableHook);
+
+    HookConVarChange(gCvars.CVAR_ALLOWHUMAN_RESPAWN, OnHumanRespawnChanged);
     
     AutoExecConfig(true, "zombieriot", "sourcemod/zombieriot");
+}
+
+public void OnHumanRespawnChanged(Handle cvar, const char[] oldvalue, const char[] newvalue)
+{
+    g_bAllowHumanRespawn = GetConVarBool(gCvars.CVAR_ALLOWHUMAN_RESPAWN)
 }
 
 void HookCvars()

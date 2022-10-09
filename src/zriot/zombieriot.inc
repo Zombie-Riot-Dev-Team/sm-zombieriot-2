@@ -82,6 +82,8 @@ float g_fAmbienceVolume[MAXPLAYERS+1];
 
 #define MAXZOMBIES 25
 
+bool g_bAllowHumanRespawn;
+
 enum struct ZRiot_DayData
 {
     char data_display[32];
