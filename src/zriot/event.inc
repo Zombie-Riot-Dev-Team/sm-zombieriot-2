@@ -558,7 +558,10 @@ public void PlayerDeath(Handle event, const char[] name, bool dontBroadcast)
         }
         
         int zombiecount = GetLiveZombieCount();
-        int zombiemax = GetConVarInt(gCvars.CVAR_ZOMBIEMAX);
+        int zombiemax = GetDayMaxZM(gDay);
+	
+        if(zombiemax < 0)
+            zombiemax = GetConVarInt(gCvars.CVAR_ZOMBIEMAX);
         
         if (respawn || zombiecount > zombiemax)
         {

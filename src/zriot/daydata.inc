@@ -61,7 +61,7 @@ void LoadDayData(bool defaultconfig)
         arrayDays[dCount].data_deaths_before_zombie = KvGetNum(kvDays, "deaths_before_zombie");
         arrayDays[dCount].data_fademin = KvGetFloat(kvDays, "fademin");
         arrayDays[dCount].data_fademax = KvGetFloat(kvDays, "fademax");
-        arrayDays[dCount].data_maxzm = KvGetNum(kvDays, "maxzm", -1);
+        arrayDays[dCount].data_maxzm = KvGetNum(kvDays, "maxzm", 0);
         arrayDays[dCount].data_maxzm_ratio = KvGetFloat(kvDays, "maxzm_ratio", 1.0);
         
         dCount++;
