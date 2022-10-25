@@ -170,7 +170,7 @@
 	"Hostname prefix"
 	{
 		"#format"	"{1:s},{2:d},{3:d}"
-		"en"		"{1} [День ZRiot: {2}/{3}]"
+		"ru"		"{1} [День ZRiot: {2}/{3}]"
 	}
 
 	"Restrict weapon mapstart"
