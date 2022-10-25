@@ -79,7 +79,7 @@ void UpdateHostname()
     char hostname_prefixed[256];
     
     SetGlobalTransTarget(LANG_SERVER);
-    Format(hostname_prefixed, sizeof(hostname_prefixed), "%t", "Hostname prefix", hostname, gDay + 1, dCount);
+    Format(hostname_prefixed, sizeof(hostname_prefixed), "%t", "Hostname prefix", hostname, gDay + 1, dCount );
     
     SetHostname(hostname_prefixed);
 }
