@@ -9,6 +9,7 @@
 char skyname[32];
 char hostname[256];
 
+
 void HookCommands()
 {
     RegConsoleCmd("nightvision", Command_NightVision);
@@ -48,11 +49,6 @@ void FindMapSky()
     GetConVarString(FindConVar("sv_skyname"), skyname, sizeof(skyname));
 }
 
-void FindHostname()
-{
-    GetConVarString(FindConVar("hostname"), hostname, sizeof(hostname));
-}
-
 void ChangeLightStyle()
 {
     bool dark = GetConVarBool(gCvars.CVAR_DARK);
@@ -77,10 +73,15 @@ void ChangeLightStyle()
 void UpdateHostname()
 {
     char hostname_prefixed[256];
-    
+    GetConVarString(FindConVar("hostname"), hostname, sizeof(hostname));
     SetGlobalTransTarget(LANG_SERVER);
-    Format(hostname_prefixed, sizeof(hostname_prefixed), "%t", "Hostname prefix", hostname, gDay + 1, dCount );
-    
+
+    int which_one = GetConVarInt(gCvars.CVAR_DAYS_POSITION);
+    if(which_one == 1){
+		Format(hostname_prefixed, sizeof(hostname_prefixed), "%s %t", hostname, "Hostname prefix", gDay + 1, dCount);
+	} else {
+		Format(hostname_prefixed, sizeof(hostname_prefixed), "%t %s", "Hostname prefix", gDay + 1, dCount, hostname);
+    }
     SetHostname(hostname_prefixed);
 }
 
