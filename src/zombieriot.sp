@@ -167,8 +167,6 @@ public void OnConfigsExecuted()
 {
     UpdateTeams();
     
-    FindHostname();
-    
     LoadAmbienceData();
     
     char mapconfig[PLATFORM_MAX_PATH];
