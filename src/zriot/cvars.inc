@@ -48,6 +48,7 @@ enum struct ZRiotSettings
     Handle CVAR_DYNAMIC_ENABLE;
     Handle CVAR_DYNAMIC_PLAYERRATIO;
     Handle CVAR_ALLOWHUMAN_RESPAWN;
+    Handle CVAR_DAYS_POSITION;
 }
 
 ZRiotSettings gCvars;
@@ -94,6 +95,7 @@ void CreateCvars()
     gCvars.CVAR_DYNAMIC_ENABLE        =    CreateConVar("zriot_dynamic_enable", "0.0", "Enable Dyanmic Zombie mode (Difficulty Dynamic) WARNING: This is still unstable.");
     gCvars.CVAR_DYNAMIC_PLAYERRATIO   =    CreateConVar("zriot_dynamic_playerratio", "10.0", "Every n player the zombie will get buffed");
     gCvars.CVAR_ALLOWHUMAN_RESPAWN    =    CreateConVar("zriot_allowhuman_respawn", "1.0", "Allow Human To Respawn in that map or not.");
+    gCvars.CVAR_DAYS_POSITION         =    CreateConVar("zriot_days_position", "1", "The position of days in the hostname, 1 = After the hostname, 2 = Before the hostname.");
     
     HookConVarChange(gCvars.CVAR_ENABLE, EnableHook);
 
