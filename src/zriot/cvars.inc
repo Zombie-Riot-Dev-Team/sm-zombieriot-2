@@ -140,7 +140,6 @@ public void EnableHook(Handle convar, const char[] oldValue, const char[] newVal
     {
         FindMapSky();
         
-        FindHostname();
         UpdateHostname();
         
         HookEvents();
