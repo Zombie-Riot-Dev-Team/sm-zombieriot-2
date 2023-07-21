@@ -2,7 +2,7 @@
  * ====================
  *    Zombie Riot
  *   File: zriot.inc
- *   Author: Greyscale, Oylsister
+ *   Author: Greyscale, Oylsister, Oz_Lin
  * ==================== 
  */
  
@@ -116,6 +116,21 @@ native int ZRiot_GetZombieKilledCount();
  */
 native int ZRiot_SetZombieCount(int day, int zombiecount);
 
+/**
+ * Get Overall Zombie health that needs to be boosted in that day.
+ * @param day   Day index.
+ * @return   Return overall zombie healthboost, -1 if invalid.
+ */
+native int ZRiot_GetZombieHealthBoost(int day);
+
+/**
+ * Set Overall Zombie health that needs to be boosted in that day.
+ * @param day   Day index.
+ * @param healthboost   number of zombie health boost that you desire to change.
+ * @return   0 if success, -1 failed otherwise.
+ */
+native int ZRiot_SetZombieHealthBoost(int day, int healthboost);
+
 public SharedPlugin __pl_zombieriot = 
 {
     name = "zombieriot",
@@ -143,5 +158,7 @@ public void __pl_zombieriot_SetNTVOptional()
     MarkNativeAsOptional("ZRiot_GetZombieCount");
     MarkNativeAsOptional("ZRiot_GetZombieKilledCount");
     MarkNativeAsOptional("ZRiot_SetZombieCount");
+    MarkNativeAsOptional("ZRiot_GetZombieHealthBoost");
+    MarkNativeAsOptional("ZRiot_SetZombieHealthBoost");
 }
 #endif

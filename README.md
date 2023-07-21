@@ -17,3 +17,5 @@ Plugin update based on original: https://forums.alliedmods.net/showthread.php?p=
 - Volume Control
 - API for Day Data and Zombie Count (NEW)
 
+In progress
+- API for Zombie Healthboost
