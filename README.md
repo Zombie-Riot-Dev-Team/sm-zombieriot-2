@@ -16,6 +16,7 @@ Plugin update based on original: https://forums.alliedmods.net/showthread.php?p=
 - Human Class
 - Volume Control
 - API for Day Data and Zombie Count (NEW)
+- API for Zombie Healthboost (NEW)
 
 In progress
-- API for Zombie Healthboost
+
