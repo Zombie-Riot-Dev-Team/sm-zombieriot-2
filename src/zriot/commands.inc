@@ -2,7 +2,7 @@
  * ====================
  *     Zombie Riot
  *   File: commands.inc
- *   Author: Greyscale
+ *   Author: Greyscale, Oz_Lin
  * ====================
  */
  
@@ -17,6 +17,7 @@ void CreateCommands()
     RegAdminCmd("zriot_human", Command_Human, ADMFLAG_GENERIC, "Turns player into human");
 
     RegAdminCmd("zriot_setcount", Command_SetCount, ADMFLAG_CONFIG, "Sets Zombie count of current day");
+    RegAdminCmd("zriot_sethealthboost", Command_SetHealthBoost, ADMFLAG_CONFIG, "Sets additional HP of zombies of current day");
 }
     
 public Action Command_Restrict(int client, int argc)
@@ -180,6 +181,32 @@ public Action Command_SetCount(int client, int argc)
 
     ZRiot_PrintToChat(0, "Set Zombie Count", count);
     arrayDays[gDay].data_count = count;
+
+    return Plugin_Handled;
+}
+
+public Action Command_SetHealthBoost(int client, int argc)
+{
+    bool enabled = GetConVarBool(gCvars.CVAR_ENABLE);
+    if (argc < 1 || !enabled)
+    {
+        return Plugin_Handled;
+    }
+
+    char sArg1[16];
+
+    GetCmdArg(1, sArg1, sizeof(sArg1));
+
+    int hboost = StringToInt(sArg1);
+
+    if(hboost < 0)
+    {
+        ZRiot_ReplyToCommand(client, "Usage Zombie Healthboost");
+        return Plugin_Handled;
+    }
+
+    ZRiot_PrintToChat(0, "Set Zombie Healthboost", hboost);
+    arrayDays[gDay].data_healthboost = hboost;
 
     return Plugin_Handled;
 }

@@ -130,6 +130,17 @@
 		"en"		"Zombie count has been changed to @green{1}@default."
 	}
 
+	"Usage Zombie Healthboost"
+	{
+		"en"		"The zombie healthboost can't be lower than 0!"
+	}
+
+	"Set Zombie Healthboost"
+	{
+		"#format"	"{1:d}"
+		"en"		"Zombie healthboost has been changed to @green{1}@default."
+	}
+
 	"Human Respawn is disabled"
 	{
 		"en"		"Human Respawn has beed disabled in this round! you will respawn again after this wave is ended."
