@@ -2,7 +2,7 @@
  * ====================
  *     Zombie Riot
  *   File: global.inc
- *   Author: Greyscale
+ *   Author: Greyscale, Oz_Lin
  * ====================
  */
 
