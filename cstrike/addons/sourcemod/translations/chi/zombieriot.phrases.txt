@@ -6,22 +6,22 @@
 
 	"Round objective"
 	{
-		"en"		"The game is @greenHumans vs. Zombies@default, humans must kill all the zombies to reach the next level."
+		"chi"		"这个游戏是 @green 人类 vs. 僵尸@default, 人类必须杀死所有的僵尸才能进入下一关."
 	}
 
 	"Feature is disabled"
 	{
-		"en"		"This feature has been disabled by the server host."
+		"chi"		"此功能已被服务器禁用."
 	}
 
 	"Must be alive"
 	{
-		"en"		"Can only be used when alive."
+		"chi"		"只有在活着的时候才能使用."
 	}
 
 	"Must be dead"
 	{
-		"en"		"Can only be used when dead."
+		"chi"		"Can only be used when dead."
 	}
 
 	"!spawn reminder"
